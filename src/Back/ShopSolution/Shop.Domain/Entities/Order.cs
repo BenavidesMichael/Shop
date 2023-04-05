@@ -4,7 +4,7 @@ namespace Shop.Domain.Entities;
 
 public class Order : BaseDomain
 {
-    public string? Buyer { get; set; }
+    public string? BuyerName { get; set; }
     public string? BuyerUserName { get; set; }
     public decimal SubTotal { get; set; }
     public decimal Total { get; set; }

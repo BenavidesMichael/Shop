@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Shop.Infrastructure.Context;
 
-internal class ShopDbContext : IdentityDbContext<User>
+public class ShopDbContext : IdentityDbContext<User>
 {
     public ShopDbContext(DbContextOptions<ShopDbContext> opt)
         : base(opt) { }

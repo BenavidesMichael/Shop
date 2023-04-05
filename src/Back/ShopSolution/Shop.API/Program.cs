@@ -1,4 +1,8 @@
+using Shop.API.Extentions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDataBase(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
