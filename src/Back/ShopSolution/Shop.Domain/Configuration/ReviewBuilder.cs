@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Shop.Domain.Common;
 using Shop.Domain.Entities;
 
-namespace Shop.Infrastructure.Configuration
+namespace Shop.Domain.Configuration
 {
     internal class ReviewBuilder : IEntityTypeConfiguration<Review>
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
+            builder.Metadata.SetSchema(SchemaDB.PRODUCT);
+
             builder.HasKey(review => review.Id);
 
             builder.Property(review => review.Name)

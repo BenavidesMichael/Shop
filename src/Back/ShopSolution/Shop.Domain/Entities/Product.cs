@@ -10,6 +10,12 @@ public class Product : BaseDomain
     public int Raiting { get; set; }
     public int Stock { get; set; }
     public bool IsAvaible { get; set; }
+
+
     public int CategoryId { get; set; }
     public Category? Category { get; set; }
+    
+    public virtual ICollection<Image>? Images { get; set; }
+    public virtual ICollection<Review>? Reviews { get; set; }
+
 }

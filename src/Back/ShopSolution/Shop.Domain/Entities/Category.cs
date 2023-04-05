@@ -6,5 +6,5 @@ public class Category : BaseDomain
 {
     public string? Name { get; set; }
 
-    public IEnumerable<Product>? Products { get; set; }
+    public virtual ICollection<Product>? Products { get; set; }
 }

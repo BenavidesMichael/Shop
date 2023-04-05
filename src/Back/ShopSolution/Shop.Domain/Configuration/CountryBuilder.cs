@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shop.Domain.Entities;
 
-namespace Shop.Infrastructure.Configuration
+namespace Shop.Domain.Configuration
 {
     internal class CountryBuilder : IEntityTypeConfiguration<Country>
     {

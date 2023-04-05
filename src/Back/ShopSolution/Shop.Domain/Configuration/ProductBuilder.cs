@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Shop.Domain.Common;
 using Shop.Domain.Entities;
 
-namespace Shop.Infrastructure.Configuration
+namespace Shop.Domain.Configuration
 {
     internal class ProductBuilder : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.Metadata.SetSchema(SchemaDB.PRODUCT);
+
             builder.HasKey(product => product.Id);
 
             builder.Property(product => product.Name)
@@ -19,9 +22,17 @@ namespace Shop.Infrastructure.Configuration
                    .HasDefaultValue("No description")
                    .HasMaxLength(4000);
 
-            builder.Property(product => product.Price)
-                     .IsRequired()
-                     .HasColumnType("decimal(10,2)");
+            builder.HasMany(product => product.Reviews)
+                 .WithOne(review => review.Product)
+                 .HasForeignKey(review => review.ProductId)
+                 .IsRequired()
+                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(product => product.Images)
+                   .WithOne(review => review.Product)
+                   .HasForeignKey(review => review.ProductId)
+                   .IsRequired()
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

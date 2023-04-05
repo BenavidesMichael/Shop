@@ -11,7 +11,6 @@ namespace Shop.Domain.Entities
         public string? Image { get; set; }
         public Guid? ShoppingCartMasterId { get; set; }
 
-
         public int ShoppingCartId { get; set; }
         public ShoppingCart? ShoppingCart { get; set; }
 

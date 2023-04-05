@@ -16,6 +16,7 @@ public class Order : BaseDomain
     public string? ClientSecret { get; set; }
     public string? StripeApiKey { get; set; }
 
+
     public OrderAddress? OrderAddress { get; set; }
     public IReadOnlyList<OrderItem>? OrderItems { get; set; }
 }
