@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Behaviors\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Features\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Specifications\" />
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
 </Project>
