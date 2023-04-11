@@ -9,7 +9,7 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
-            builder.Metadata.SetSchema(SchemaDB.PRODUCT);
+            builder.ToTable("Reviews", SchemaDB.PRODUCT);
 
             builder.HasKey(review => review.Id);
 

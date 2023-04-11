@@ -9,7 +9,7 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.Metadata.SetSchema(SchemaDB.ORDER);
+            builder.ToTable("Orders", SchemaDB.ORDER);
 
             builder.HasKey(order => order.Id);
 

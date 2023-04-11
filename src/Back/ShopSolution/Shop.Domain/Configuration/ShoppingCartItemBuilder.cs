@@ -9,7 +9,7 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<ShoppingCartItem> builder)
         {
-            builder.Metadata.SetSchema(SchemaDB.BASKET);
+            builder.ToTable("ShoppingCartItems", SchemaDB.BASKET);
 
             builder.HasKey(shoppingCartItem => shoppingCartItem.Id);
 

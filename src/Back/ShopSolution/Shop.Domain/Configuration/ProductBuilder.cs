@@ -9,7 +9,7 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.Metadata.SetSchema(SchemaDB.PRODUCT);
+            builder.ToTable("Products", SchemaDB.PRODUCT);
 
             builder.HasKey(product => product.Id);
 

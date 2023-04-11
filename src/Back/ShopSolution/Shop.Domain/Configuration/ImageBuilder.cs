@@ -9,7 +9,7 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
-            builder.Metadata.SetSchema(SchemaDB.PRODUCT);
+            builder.ToTable("Images", SchemaDB.PRODUCT);
 
             builder.HasKey(image => image.Id);
         }
