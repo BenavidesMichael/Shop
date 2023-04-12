@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Shop.Domain.Common;
 using Shop.Domain.Entities;
 using Shop.Infrastructure.Conventions;
 using System.Reflection;
@@ -28,6 +29,30 @@ public class ShopDbContext : IdentityDbContext<User>
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Country> Countries { get; set; }
 
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
+    {
+        foreach (var entry in ChangeTracker.Entries<BaseDomain>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
+        {
+            switch (entry.State)
+            {
+                case EntityState.Added:
+                    entry.Entity.CreatedDate = DateTime.Now;
+                    entry.Entity.CreatedBy = "System";
+                    break;
+
+                case EntityState.Modified:
+                    entry.Entity.LastModifiedDate = DateTime.Now;
+                    entry.Entity.CreatedBy = "System";
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        return base.SaveChangesAsync(cancellationToken);
+    }
 
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
