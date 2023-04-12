@@ -64,5 +64,17 @@ public class ShopDbContext : IdentityDbContext<User>
     {
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        builder.Entity<Product>().ToTable(nameof(Products), SchemaDB.PRODUCT);
+        builder.Entity<Image>().ToTable(nameof(Images), SchemaDB.PRODUCT);
+        builder.Entity<Category>().ToTable(nameof(Categories), SchemaDB.PRODUCT);
+        builder.Entity<Review>().ToTable(nameof(Reviews), SchemaDB.PRODUCT);
+
+        builder.Entity<ShoppingCart>().ToTable(nameof(ShoppingCarts), SchemaDB.BASKET);
+        builder.Entity<ShoppingCartItem>().ToTable(nameof(ShoppingCartItems), SchemaDB.BASKET);
+
+        builder.Entity<Order>().ToTable(nameof(Orders), SchemaDB.ORDER);
+        builder.Entity<OrderItem>().ToTable(nameof(OrderItems), SchemaDB.ORDER);
+        builder.Entity<OrderAddress>().ToTable(nameof(OrderAddresses), SchemaDB.ORDER);
     }
 }

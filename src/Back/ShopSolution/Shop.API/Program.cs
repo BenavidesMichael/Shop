@@ -6,6 +6,12 @@ using Shop.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDataBase(builder.Configuration);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddCorsExtention();
+builder.Services.AddIdentity(builder.Configuration);
+builder.Services.AddInfrastructureServiceRegistartion(builder.Configuration);
+
 builder.Services.AddControllers(opt =>
 {
     var policy = new AuthorizationPolicyBuilder()
@@ -14,11 +20,6 @@ builder.Services.AddControllers(opt =>
 
     opt.Filters.Add(new AuthorizeFilter(policy));
 });
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddCorsExtention();
-builder.Services.AddInfrastructureServiceRegistartion(builder.Configuration);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -33,5 +34,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors();
 app.MapControllers();
+
+await app.AddSeed();
 
 app.Run();

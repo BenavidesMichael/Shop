@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Shop.Domain.Common;
 using Shop.Domain.Entities;
 
 namespace Shop.Domain.Configuration
@@ -9,7 +8,6 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<OrderAddress> builder)
         {
-            builder.ToTable("OrderAddresses", SchemaDB.ORDER);
             builder.HasKey(orderAddress => orderAddress.Id);
         }
     }

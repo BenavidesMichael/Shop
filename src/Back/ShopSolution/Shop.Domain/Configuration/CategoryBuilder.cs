@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Shop.Domain.Common;
 using Shop.Domain.Entities;
 
 namespace Shop.Domain.Configuration
@@ -9,8 +8,6 @@ namespace Shop.Domain.Configuration
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Categories", SchemaDB.PRODUCT);
-
             builder.HasKey(category => category.Id);
 
             builder.Property(category => category.Name)
