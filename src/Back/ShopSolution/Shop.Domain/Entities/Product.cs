@@ -9,7 +9,7 @@ public class Product : BaseDomain
     public string? Description { get; set; }
     public int Raiting { get; set; }
     public int Stock { get; set; }
-    public bool IsAvaible { get; set; }
+    public bool IsAvaible { get; set; } = true;
     public string? BuyerName { get; set; }
 
     public int CategoryId { get; set; }
