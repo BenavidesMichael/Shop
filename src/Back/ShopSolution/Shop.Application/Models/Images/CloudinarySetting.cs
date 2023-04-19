@@ -1,4 +1,4 @@
-﻿namespace Shop.Infrastructure.Services.ImageService
+﻿namespace Shop.Application.Models.Images
 {
     public class CloudinarySetting
     {

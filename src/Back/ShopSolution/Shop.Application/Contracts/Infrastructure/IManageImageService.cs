@@ -1,4 +1,4 @@
-﻿using Shop.Application.Models;
+﻿using Shop.Application.Models.Images;
 
 namespace Shop.Application.Contracts.Infrastructure
 {

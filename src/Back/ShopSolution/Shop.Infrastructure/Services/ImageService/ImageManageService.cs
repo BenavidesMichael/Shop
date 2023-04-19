@@ -2,7 +2,7 @@
 using CloudinaryDotNet.Actions;
 using Microsoft.Extensions.Options;
 using Shop.Application.Contracts.Infrastructure;
-using Shop.Application.Models;
+using Shop.Application.Models.Images;
 
 namespace Shop.Infrastructure.Services.ImageService
 {

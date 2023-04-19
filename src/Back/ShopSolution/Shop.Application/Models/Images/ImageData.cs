@@ -1,4 +1,4 @@
-﻿namespace Shop.Application.Models
+﻿namespace Shop.Application.Models.Images
 {
     public class ImageData
     {
