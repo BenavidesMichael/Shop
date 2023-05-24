@@ -2,7 +2,7 @@
 
 namespace Shop.Application.Contracts.Infrastructure
 {
-    public interface IMailService
+    public interface IEmailService
     {
         Task<bool> SendEmailAsync(MailRequest mailRequest, string token);
     }

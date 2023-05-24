@@ -5,14 +5,14 @@ using SendGrid.Helpers.Mail;
 using Shop.Application.Contracts.Infrastructure;
 using Shop.Application.Models.Mail;
 
-namespace Shop.Infrastructure.Services.MailService
+namespace Shop.Infrastructure.Services.Email
 {
-    public class MailService : IMailService
+    public class EmailService : IEmailService
     {
         public SendGridSetting _sendGridSetting { get; }
-        public ILogger<MailService> _logger { get; }
+        public ILogger<EmailService> _logger { get; }
 
-        public MailService(IOptions<SendGridSetting> options, ILogger<MailService> logger)
+        public EmailService(IOptions<SendGridSetting> options, ILogger<EmailService> logger)
         {
             _sendGridSetting = options.Value;
             _logger = logger;

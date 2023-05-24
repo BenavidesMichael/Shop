@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Shop.Infrastructure.Context;
 
-public class ShopDbContext : IdentityDbContext<User>
+public class ShopDbContext : IdentityDbContext<ApplicationUser>
 {
     public ShopDbContext(DbContextOptions<ShopDbContext> opt)
         : base(opt) { }
@@ -64,7 +64,7 @@ public class ShopDbContext : IdentityDbContext<User>
     {
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
+
         builder.Entity<Product>().ToTable(nameof(Products), SchemaDB.PRODUCT);
         builder.Entity<Image>().ToTable(nameof(Images), SchemaDB.PRODUCT);
         builder.Entity<Category>().ToTable(nameof(Categories), SchemaDB.PRODUCT);

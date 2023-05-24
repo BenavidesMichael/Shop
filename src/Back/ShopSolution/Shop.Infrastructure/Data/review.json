@@ -1,38 +1,32 @@
 [
-    {
-        "nombre" : "Juan Perez",
-        "rating": 5,
-        "comentario": "Es un producto muy bueno",
-        "productId": 1
-    },
-    {
-        "nombre" : "Luis Sanchez",
-        "rating": 5,
-        "comentario": "La mejor compra que he hecho",
-        "productId": 2
-    },
-    {
-        "nombre" : "Felipe Castillo",
-        "rating": 5,
-        "comentario": "Siempre cumple sus funciones, nunca falla",
-        "productId": 3
-    },
-    {
-        "nombre" : "Maria Lopez",
-        "rating": 5,
-        "comentario": "Fantastico device, funcionamiento excepcional",
-        "productId": 4
-    },
-    {
-        "nombre" : "Pedro Santillan",
-        "rating": 5,
-        "comentario": "Lo consegui con una oferta increible",
-        "productId": 5
-    },
-    {
-        "nombre" : "Jeff Smith",
-        "rating": 5,
-        "comentario": "Volvere a comprar otro, es un producto con grandes beneficios",
-        "productId": 6
-    }
+  {
+    "Name": "John Doe",
+    "Rating": 5,
+    "Comment": "Great product, highly recommended!",
+    "ProductId": 1
+  },
+  {
+    "Name": "Jane Smith",
+    "Rating": 4,
+    "Comment": "Good value for the price.",
+    "ProductId": 2
+  },
+  {
+    "Name": "David Johnson",
+    "Rating": 3,
+    "Comment": "Average performance, could be better.",
+    "ProductId": 1
+  },
+  {
+    "Name": "Sarah Williams",
+    "Rating": 5,
+    "Comment": "Excellent customer service.",
+    "ProductId": 3
+  },
+  {
+    "Name": "Michael Brown",
+    "Rating": 2,
+    "Comment": "Not satisfied with the quality.",
+    "ProductId": 2
+  }
 ]

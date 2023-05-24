@@ -30,6 +30,12 @@ namespace Shop.Domain.Configuration
                    .HasForeignKey(review => review.ProductId)
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(product => product.Category)
+                .WithMany(category => category.Products)
+                     .HasForeignKey(product => product.CategoryId)
+                     .IsRequired()
+                     .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

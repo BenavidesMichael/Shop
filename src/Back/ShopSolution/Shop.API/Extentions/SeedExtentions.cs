@@ -16,7 +16,7 @@ namespace Shop.API.Extentions
             try
             {
                 var shopDbContext = services.GetRequiredService<ShopDbContext>();
-                var userManager = services.GetRequiredService<UserManager<User>>();
+                var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
                 await shopDbContext.Database.MigrateAsync();

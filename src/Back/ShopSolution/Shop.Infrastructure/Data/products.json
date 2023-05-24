@@ -1,0 +1,229 @@
+[
+  {
+    "name": "Product A",
+    "price": 25.99,
+    "description": "description of Product A",
+    "raiting": 4,
+    "stock": 20,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 2,
+    "category": null,
+    "images": [
+      {
+        "id": 1,
+        "url": "https://example.com/productA/image1.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://example.com/productA/image2.jpg"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Good product, would recommend.",
+        "rating": 4,
+        "name": "John Smith"
+      },
+      {
+        "id": 2,
+        "comment": "Not as described, very disappointed.",
+        "rating": 1,
+        "name": "Jane Doe"
+      }
+    ]
+  },
+  {
+    "name": "Product B",
+    "price": 19.99,
+    "description": "description of Product B",
+    "raiting": 3,
+    "stock": 10,
+    "isAvaible": false,
+    "buyername": "John Smith",
+    "categoryId": 1,
+    "category": null,
+    "images": [
+      {
+        "id": 1,
+        "url": "https://example.com/productB/image1.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://example.com/productB/image2.jpg"
+      }
+    ],
+    "reviews": []
+  },
+  {
+    "name": "Product C",
+    "price": 9.99,
+    "description": "description of Product C",
+    "raiting": 2,
+    "stock": 5,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 3,
+    "category": null,
+    "images": [
+      {
+        "id": 1,
+        "url": "https://example.com/productC/image1.jpg"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Terrible product, would not recommend.",
+        "rating": 1,
+        "name": "Jane Smith"
+      }
+    ]
+  },
+  {
+    "name": "Product D",
+    "price": 49.99,
+    "description": "description of Product D",
+    "raiting": 5,
+    "stock": 100,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 1,
+    "category": null,
+    "images": [
+      {
+        "id": 1,
+        "url": "https://example.com/productD/image1.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://example.com/productD/image2.jpg"
+      },
+      {
+        "id": 3,
+        "url": "https://example.com/productD/image3.jpg"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Amazing product, exceeded expectations.",
+        "rating": 5,
+        "name": "John Doe"
+      }
+    ]
+  },
+  {
+    "name": "Product E",
+    "price": 14.99,
+    "description": "description of Product E",
+    "raiting": 4,
+    "stock": 50,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 2,
+    "category": null,
+    "images": [],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Good value for the price.",
+        "rating": 4,
+        "name": "Sarah Johnson"
+      },
+      {
+        "id": 2,
+        "comment": "Not as good as expected, but okay.",
+        "rating": 3,
+        "name": "James Brown"
+      }
+    ]
+  },
+  {
+    "name": "Product F",
+    "price": 29.99,
+    "description": "description of Product F",
+    "raiting": 3,
+    "stock": 15,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 3,
+    "category": null,
+    "images": [
+      {
+        "Id": 1,
+        "url": "https://example.com/productF/image1.jpg"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Not worth the price, would not recommend.",
+        "rating": 2,
+        "name": "Adam Smith"
+      }
+    ]
+  },
+  {
+    "name": "Product G",
+    "price": 39.99,
+    "description": "description of Product G",
+    "raiting": 4,
+    "stock": 30,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 1,
+    "category": null,
+    "images": [
+      {
+        "id": 1,
+        "url": "https://example.com/productG/image1.jpg"
+      },
+      {
+        "id": 2,
+        "url": "https://example.com/productG/image2.jpg"
+      }
+    ],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Great product, worth the price.",
+        "rating": 5,
+        "name": "Emily Johnson"
+      },
+      {
+        "id": 2,
+        "comment": "Good product, but a bit expensive.",
+        "rating": 4,
+        "name": "Mike Brown"
+      }
+    ]
+  },
+  {
+    "name": "Product H",
+    "price": 24.99,
+    "description": "description of Product H",
+    "raiting": 2,
+    "stock": 8,
+    "isAvaible": true,
+    "buyername": null,
+    "categoryId": 2,
+    "category": null,
+    "images": [],
+    "reviews": [
+      {
+        "id": 1,
+        "comment": "Not good, would not recommend.",
+        "rating": 1,
+        "name": "Jessica Lee"
+      },
+      {
+        "id": 2,
+        "comment": "Okay product, but there are better options.",
+        "rating": 3,
+        "name": "Mark Davis"
+      }
+    ]
+  }
+]

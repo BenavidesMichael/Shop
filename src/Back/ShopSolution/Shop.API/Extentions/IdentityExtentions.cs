@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
-using Shop.Domain.Entities;
 using Shop.Infrastructure.Context;
 using System.Text;
 
@@ -13,7 +12,7 @@ namespace Shop.API.Extentions
     {
         public static IServiceCollection AddIdentity(this IServiceCollection services, IConfiguration Configuration)
         {
-            services.AddIdentity<User, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireDigit = true;
@@ -22,10 +21,9 @@ namespace Shop.API.Extentions
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
             }).AddDefaultTokenProviders()
-              .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<User, IdentityRole>>()
+              .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>>()
               .AddEntityFrameworkStores<ShopDbContext>()
-              .AddSignInManager<SignInManager<User>>();
-
+              .AddSignInManager<SignInManager<ApplicationUser>>();
 
             services.TryAddSingleton<ISystemClock, SystemClock>();
 

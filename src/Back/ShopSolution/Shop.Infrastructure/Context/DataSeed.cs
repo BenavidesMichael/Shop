@@ -10,7 +10,7 @@ namespace Shop.Infrastructure.Context
     {
         public static async Task LoadDataAsync(
             ShopDbContext shopDbContext,
-            UserManager<User> userManager,
+            UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             ILoggerFactory loggerFactory)
         {
@@ -24,26 +24,27 @@ namespace Shop.Infrastructure.Context
 
                 if (!userManager.Users.Any())
                 {
-                    var userMichael = new User
+                    var userMichael = new ApplicationUser()
                     {
-                        FirstName = "Michael",
-                        LastName = "Benavides",
                         UserName = "Mucha003",
                         Email = "Mucha003@gmail.com",
+                        FirstName = "Michael",
+                        LastName = "Benavides",
                         AvatarUrl = "https://gravatar.com/avatar/382932807a0673fda01a9ff9c1c0c5c8?s=400&d=robohash&r=x",
                     };
+
                     await userManager.CreateAsync(userMichael, "Michael_Benavides003$");
                     await userManager.AddToRoleAsync(userMichael, RoleAuth.ADMIN);
 
-
-                    var userEthan = new User
+                    var userEthan = new ApplicationUser()
                     {
-                        FirstName = "Ethan",
-                        LastName = "Hunt",
                         UserName = "FMI",
                         Email = "FMI@gmail.com",
+                        FirstName = "Ethan",
+                        LastName = "Hunt",
                         AvatarUrl = "https://gravatar.com/avatar/e83a6432e9ed8ea1a4509e9d854eb949?s=400&d=robohash&r=x",
                     };
+
                     await userManager.CreateAsync(userEthan, "Ethan_Hunt003$");
                     await userManager.AddToRoleAsync(userEthan, RoleAuth.USER);
                 }

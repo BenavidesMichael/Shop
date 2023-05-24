@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Shop.API.Extentions;
+using Shop.API.Middlewares;
+using Shop.Application;
 using Shop.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCorsExtention();
 builder.Services.AddIdentity(builder.Configuration);
+
 builder.Services.AddInfrastructureServiceRegistartion(builder.Configuration);
+builder.Services.AddApplicationServiceRegistration(builder.Configuration);
+
 
 builder.Services.AddControllers(opt =>
 {
@@ -30,9 +35,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors();
+
 app.MapControllers();
 
 await app.AddSeed();
