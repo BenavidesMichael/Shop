@@ -12,23 +12,21 @@ public class ShopDbContext : IdentityDbContext<ApplicationUser>
     public ShopDbContext(DbContextOptions<ShopDbContext> opt)
         : base(opt) { }
 
-
     // Product
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Image> Images { get; set; }
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Product>? Products { get; set; }
+    public DbSet<Image>? Images { get; set; }
+    public DbSet<Category>? Categories { get; set; }
+    public DbSet<Review>? Reviews { get; set; }
     // ShoppingCart
-    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-    public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+    public DbSet<ShoppingCart>? ShoppingCarts { get; set; }
+    public DbSet<ShoppingCartItem>? ShoppingCartItems { get; set; }
     // Order
-    public DbSet<Order> Orders { get; set; }
-    public DbSet<OrderItem> OrderItems { get; set; }
-    public DbSet<OrderAddress> OrderAddresses { get; set; }
+    public DbSet<Order>? Orders { get; set; }
+    public DbSet<OrderItem>? OrderItems { get; set; }
+    public DbSet<OrderAddress>? OrderAddresses { get; set; }
     // User
-    public DbSet<Address> Addresses { get; set; }
-    public DbSet<Country> Countries { get; set; }
-
+    public DbSet<Address>? Addresses { get; set; }
+    public DbSet<Country>? Countries { get; set; }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
@@ -54,10 +52,9 @@ public class ShopDbContext : IdentityDbContext<ApplicationUser>
         return base.SaveChangesAsync(cancellationToken);
     }
 
-
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
-        ColumnTypeConvention.Convert(configurationBuilder);
+        configurationBuilder.Convert();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

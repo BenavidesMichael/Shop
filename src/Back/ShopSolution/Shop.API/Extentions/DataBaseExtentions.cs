@@ -9,10 +9,9 @@ namespace Shop.API.Extentions
         {
             services.AddDbContext<ShopDbContext>(options
                   => options.UseSqlServer(
-                        Configuration.GetConnectionString("ShopDemo"), 
+                        Configuration.GetConnectionString("ShopDemo"),
                         b => b.MigrationsAssembly(typeof(ShopDbContext).Assembly.FullName))
             );
-
 
             return services;
         }

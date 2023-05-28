@@ -27,7 +27,6 @@ namespace Shop.API.Extentions
 
             services.TryAddSingleton<ISystemClock, SystemClock>();
 
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(opt =>
                     {
@@ -43,7 +42,6 @@ namespace Shop.API.Extentions
                             ClockSkew = TimeSpan.Zero
                         };
                     });
-
 
             return services;
         }

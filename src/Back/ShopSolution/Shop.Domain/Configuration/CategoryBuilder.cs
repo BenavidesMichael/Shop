@@ -19,7 +19,6 @@ namespace Shop.Domain.Configuration
                    .HasForeignKey(product => product.CategoryId)
                    .IsRequired()
                    .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

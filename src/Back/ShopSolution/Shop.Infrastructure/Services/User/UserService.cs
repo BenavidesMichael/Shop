@@ -17,11 +17,11 @@ namespace Shop.Infrastructure.Services.User
             _userManager = userManager;
         }
 
-        public async Task<Application.Models.User> GetByEmailAsync(string email)
+        public async Task<Application.Models.User?> GetByEmailAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email!);
 
-            if (user is null) return null;
+            if (user is null) return default;
 
             var role = await _userManager.GetRolesAsync(user!);
 
@@ -41,7 +41,7 @@ namespace Shop.Infrastructure.Services.User
         public async Task<bool> SignIn(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email!);
-            var result = await _signInManager.CheckPasswordSignInAsync(user, password!, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user!, password!, false);
             return result.Succeeded;
         }
     }

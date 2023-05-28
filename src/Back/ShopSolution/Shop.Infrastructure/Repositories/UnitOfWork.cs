@@ -14,7 +14,6 @@ namespace Shop.Infrastructure.Repositories
             _context = context;
         }
 
-
         public async Task<int> CommitAsync()
         {
             try
@@ -34,8 +33,7 @@ namespace Shop.Infrastructure.Repositories
         /// <returns></returns>
         public IBaseRepository<T> Repository<T>() where T : class
         {
-            if (_repositories is null)
-                _repositories = new Hashtable();
+            _repositories ??= new Hashtable();
 
             string? type = typeof(T).Name;
 
@@ -49,10 +47,17 @@ namespace Shop.Infrastructure.Repositories
             return (IBaseRepository<T>)_repositories[type]!;
         }
 
-
         public void Dispose()
         {
             _context.Dispose();
+
+            // permet de ne pas appeler la méthode Finalize() pour cet objet lorsqu'il est ramassé.
+            // La méthode Finalize() est utilisée pour effectuer des opérations de nettoyage 
+            // avant que l'objet ne soit réellement supprimé de la mémoire.
+            // Cependant, puisque nous avons déjà appelé Dispose() pour libérer les ressources, 
+            // nous n'avons plus besoin de la méthode Finalize().
+            // En appelant GC.SuppressFinalize(this), nous indiquons au garbage collector de l'ignorer.
+            GC.SuppressFinalize(this);
         }
     }
 }

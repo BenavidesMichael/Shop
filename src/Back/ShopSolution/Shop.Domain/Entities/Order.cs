@@ -11,11 +11,9 @@ public class Order : BaseDomain
     public decimal Taxe { get; set; }
     public decimal SendingPrice { get; set; }
     public OrderStatus Status { get; set; } = OrderStatus.Pending;
-    
     public string? PaymentIntentId { get; set; }
     public string? ClientSecret { get; set; }
     public string? StripeApiKey { get; set; }
-
 
     public OrderAddress? OrderAddress { get; set; }
     public IReadOnlyList<OrderItem>? OrderItems { get; set; }

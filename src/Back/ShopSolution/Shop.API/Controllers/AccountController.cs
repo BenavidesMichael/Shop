@@ -26,6 +26,5 @@ namespace Shop.API.Controllers
             var response = await _mediator.Send(command);
             return Ok(response);
         }
-
     }
 }

@@ -7,14 +7,13 @@ namespace Shop.API.Errors
         public int StatusCode { get; init; }
         public string[]? Message { get; set; }
 
-
         public CodeErrorResponse(int StatusCode, string[]? Message)
         {
             this.StatusCode = StatusCode;
 
             if (Message is null)
             {
-                Message = new string[] { GetDefaultMessageForStatusCode(StatusCode) };
+                _ = new string[] { GetDefaultMessageForStatusCode(StatusCode) };
             }
             else
             {
@@ -22,7 +21,7 @@ namespace Shop.API.Errors
             }
         }
 
-        private string GetDefaultMessageForStatusCode(int StatusCode)
+        private static string GetDefaultMessageForStatusCode(int StatusCode)
         {
             return StatusCode switch
             {
@@ -33,6 +32,5 @@ namespace Shop.API.Errors
                 _ => string.Empty,
             };
         }
-
     }
 }

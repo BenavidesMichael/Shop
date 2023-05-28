@@ -15,7 +15,6 @@ namespace Shop.Application.Persistence
         Task<T> UpdateAsync(T entity);
         Task DeleteAsync(T entity);
 
-
         public void AddEntity(T entity);
         public void AddRangeEntity(List<T> entity);
         public void DeleteEntity(T entity);

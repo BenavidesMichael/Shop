@@ -17,8 +17,8 @@ namespace Shop.Infrastructure.Services.Auth
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserService _userService;
 
-        public JWTSetting _jwtSetting { get; }
-        public ILogger<AuthService> _logger { get; }
+        public JWTSetting JwtSetting { get; }
+        public ILogger<AuthService> Logger { get; }
 
         public AuthService(
             IOptions<JWTSetting> options,
@@ -27,8 +27,8 @@ namespace Shop.Infrastructure.Services.Auth
             IUserService userService
             )
         {
-            _logger = logger;
-            _jwtSetting = options.Value;
+            Logger = logger;
+            JwtSetting = options.Value;
             _httpContextAccessor = httpContextAccessor;
             _userService = userService;
         }
@@ -39,11 +39,11 @@ namespace Shop.Infrastructure.Services.Auth
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName!),
-                new Claim(ClaimTypes.NameIdentifier, user.Email!),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email!),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName!),
-                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName!),
+                new Claim(ClaimTypes.Name, user?.UserName!),
+                new Claim(ClaimTypes.NameIdentifier, user?.Email!),
+                new Claim(JwtRegisteredClaimNames.Email, user?.Email!),
+                new Claim(JwtRegisteredClaimNames.GivenName, user?.FirstName!),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user?.LastName!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
             };
@@ -53,10 +53,10 @@ namespace Shop.Infrastructure.Services.Auth
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSetting.Key!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSetting.Key!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.Now.AddHours(1);
-            var token = new JwtSecurityToken(_jwtSetting.Issuer, _jwtSetting.Issuer, claims, expires: expires, signingCredentials: creds);
+            var token = new JwtSecurityToken(JwtSetting.Issuer, JwtSetting.Issuer, claims, expires: expires, signingCredentials: creds);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 

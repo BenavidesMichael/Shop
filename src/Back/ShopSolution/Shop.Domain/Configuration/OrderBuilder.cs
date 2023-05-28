@@ -11,11 +11,7 @@ namespace Shop.Domain.Configuration
             builder.HasKey(order => order.Id);
 
             // 1-1 relationship with Address
-            builder.OwnsOne(order => order.OrderAddress, shippingAddress =>
-            {
-                shippingAddress.WithOwner();
-            });
-
+            builder.OwnsOne(order => order.OrderAddress, shippingAddress => shippingAddress.WithOwner());
 
             builder.HasMany(order => order.OrderItems)
                    .WithOne(orderItem => orderItem.Order)

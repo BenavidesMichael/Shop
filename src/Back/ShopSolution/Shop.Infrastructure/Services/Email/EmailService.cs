@@ -9,28 +9,26 @@ namespace Shop.Infrastructure.Services.Email
 {
     public class EmailService : IEmailService
     {
-        public SendGridSetting _sendGridSetting { get; }
-        public ILogger<EmailService> _logger { get; }
+        public SendGridSetting SendGridSetting { get; }
+        public ILogger<EmailService> Logger { get; }
 
         public EmailService(IOptions<SendGridSetting> options, ILogger<EmailService> logger)
         {
-            _sendGridSetting = options.Value;
-            _logger = logger;
+            SendGridSetting = options.Value;
+            Logger = logger;
         }
-
 
         public async Task<bool> SendEmailAsync(MailRequest mailRequest, string token)
         {
             try
             {
-                var client = new SendGridClient(_sendGridSetting.ApiSecret);
-                
-                var from = new EmailAddress(_sendGridSetting.Email);
+                var client = new SendGridClient(SendGridSetting.ApiSecret);
+
+                var from = new EmailAddress(SendGridSetting.Email);
                 var subject = mailRequest.Subject;
                 var to = new EmailAddress(mailRequest.To, mailRequest.To);
-                
 
-                var htmlContent = $"{mailRequest.Body} {_sendGridSetting.BaseUrl}/password/reset/{token}";
+                var htmlContent = $"{mailRequest.Body} {SendGridSetting.BaseUrl}/password/reset/{token}";
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, "", htmlContent);
 
                 var response = await client.SendEmailAsync(msg);
@@ -38,7 +36,7 @@ namespace Shop.Infrastructure.Services.Email
             }
             catch (Exception)
             {
-                _logger.LogError("Error : Email not send");
+                Logger.LogError("Error : Email not send");
                 return false;
             }
         }

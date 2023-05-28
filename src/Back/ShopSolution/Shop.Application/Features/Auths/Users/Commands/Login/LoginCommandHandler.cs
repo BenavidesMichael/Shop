@@ -24,7 +24,6 @@ namespace Shop.Application.Features.Auths.Users.Commands.Login
             _userService = userService;
         }
 
-
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userService.GetByEmailAsync(request.Email!);

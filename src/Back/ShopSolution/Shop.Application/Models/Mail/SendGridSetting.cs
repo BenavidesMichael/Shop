@@ -5,6 +5,5 @@
         public string? Email { get; set; }
         public string? ApiSecret { get; set; }
         public string? BaseUrl { get; set; }
-
     }
 }

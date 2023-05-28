@@ -14,8 +14,7 @@ builder.Services.AddCorsExtention();
 builder.Services.AddIdentity(builder.Configuration);
 
 builder.Services.AddInfrastructureServiceRegistartion(builder.Configuration);
-builder.Services.AddApplicationServiceRegistration(builder.Configuration);
-
+builder.Services.AddApplicationServiceRegistration();
 
 builder.Services.AddControllers(opt =>
 {

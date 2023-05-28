@@ -8,16 +8,16 @@ namespace Shop.Infrastructure.Services.ImageService
 {
     public class ImageManageService : IImageManageService
     {
-        public CloudinarySetting _cloudinarySetting { get; }
+        public CloudinarySetting CloudinarySetting { get; }
 
         public ImageManageService(IOptions<CloudinarySetting> options)
         {
-            _cloudinarySetting = options.Value;
+            CloudinarySetting = options.Value;
         }
 
         public async Task<ImageResponse> UploadImage(ImageData imageData)
         {
-            var account = new Account(_cloudinarySetting.CloudName, _cloudinarySetting.ApiKey, _cloudinarySetting.ApiSecret);
+            var account = new Account(CloudinarySetting.CloudName, CloudinarySetting.ApiKey, CloudinarySetting.ApiSecret);
             var cloudinary = new Cloudinary(account);
 
             var uploadParams = new ImageUploadParams()
@@ -26,7 +26,7 @@ namespace Shop.Infrastructure.Services.ImageService
             };
 
             var uploadResult = await cloudinary.UploadAsync(uploadParams);
-            
+
             if (uploadResult.Error != null)
             {
                 throw new Exception("Error while uploading image");
