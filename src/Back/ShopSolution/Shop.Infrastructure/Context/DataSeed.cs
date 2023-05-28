@@ -92,7 +92,7 @@ namespace Shop.Infrastructure.Context
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<DataSeed>();
-                logger.LogError(ex.Message);
+                logger.LogError("message : {Message}", ex.Message);
             }
         }
     }

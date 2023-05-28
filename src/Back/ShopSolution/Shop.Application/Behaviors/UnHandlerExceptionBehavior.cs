@@ -20,8 +20,7 @@ namespace Shop.Application.Behaviors
             }
             catch (Exception ex)
             {
-                var requestName = typeof(TRequest).Name;
-                _logger.LogError(ex, $"Application request error: {requestName}", request);
+                _logger.LogError("Application request error: {requestName} \n {request} \n {ex}", typeof(TRequest).Name, ex, request);
                 throw;
             }
         }

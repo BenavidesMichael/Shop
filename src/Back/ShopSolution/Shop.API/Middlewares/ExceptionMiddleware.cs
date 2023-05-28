@@ -24,8 +24,14 @@ namespace Shop.API.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
-                context.Response.ContentType = "application/json";
+                _logger.LogError("Something went wrong: {ex}", ex);
+                await HandleExceptionAsync(context, ex);
+            }
+        }
+
+        private static async Task HandleExceptionAsync(HttpContext context, Exception ex)
+        {
+             context.Response.ContentType = "application/json";
                 int statusCode = (int)HttpStatusCode.InternalServerError;
                 var result = string.Empty;
 
@@ -53,7 +59,6 @@ namespace Shop.API.Middlewares
 
                 context.Response.StatusCode = statusCode;
                 await context.Response.WriteAsync(result);
-            }
         }
     }
 }
