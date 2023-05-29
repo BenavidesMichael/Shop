@@ -1,10 +1,11 @@
-using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Shop.API.Extentions;
 using Shop.API.Middlewares;
 using Shop.Application;
 using Shop.Infrastructure;
+using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ builder.Services.AddControllers(opt =>
         .Build();
 
     opt.Filters.Add(new AuthorizeFilter(policy));
+}).AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
 var app = builder.Build();
