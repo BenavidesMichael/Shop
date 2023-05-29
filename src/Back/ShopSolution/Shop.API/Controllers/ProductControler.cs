@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Shop.Domain.Entities;
 using System.Net;
+using Shop.Application.Features.Products.Queries.GetProducts;
 
 namespace Shop.API.Controllers
 {
@@ -9,21 +9,20 @@ namespace Shop.API.Controllers
     [ApiController]
     public class ProductControler : ControllerBase
     {
-        //private readonly IMediator _mediator;
+        private readonly IMediator _mediator;
 
-        //public ProductControler(IMediator mediator)
-        //{
-        //    _mediator = mediator;
-        //}
+        public ProductControler(IMediator mediator)
+        {
+           _mediator = mediator;
+        }
 
         [HttpGet(nameof(GetProducts))]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        [ProducesResponseType(typeof(IReadOnlyList<GetProductsResponse>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IReadOnlyList<GetProductsResponse>>> GetProducts()
         {
-            //var query = new GetProductsRequest();
-            //var products = await _mediator.Send(query);
-            //return Ok(products);
-            return Ok("products");
+            var query = new GetProductsRequest();
+            var products = await _mediator.Send(query);
+            return Ok(products);
         }
     }
 }
