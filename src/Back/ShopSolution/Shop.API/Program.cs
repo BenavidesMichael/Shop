@@ -1,3 +1,4 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Shop.API.Extentions;
@@ -8,8 +9,7 @@ using Shop.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDataBase(builder.Configuration);
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 builder.Services.AddCorsExtention();
 builder.Services.AddIdentity(builder.Configuration);
 

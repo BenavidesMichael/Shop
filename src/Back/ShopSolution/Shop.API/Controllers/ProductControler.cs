@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Shop.Application.Features.Products.Queries.GetProducts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Shop.API.Controllers
 {
@@ -17,6 +18,7 @@ namespace Shop.API.Controllers
         }
 
         [HttpGet(nameof(GetProducts))]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IReadOnlyList<GetProductsResponse>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IReadOnlyList<GetProductsResponse>>> GetProducts()
         {
