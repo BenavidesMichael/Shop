@@ -49,43 +49,43 @@ namespace Shop.Infrastructure.Context
                     await userManager.AddToRoleAsync(userEthan, RoleAuth.USER);
                 }
 
-                if (!shopDbContext.Categories.Any())
+                if (!shopDbContext.Categories!.Any())
                 {
                     string? categories = File.ReadAllText("../Shop.Infrastructure/Data/category.json");
                     List<Category>? categoriesList = JsonSerializer.Deserialize<List<Category>>(categories);
-                    await shopDbContext.Categories.AddRangeAsync(categoriesList!);
+                    await shopDbContext.Categories!.AddRangeAsync(categoriesList!);
                     await shopDbContext.SaveChangesAsync();
                 }
 
-                if (!shopDbContext.Products.Any())
+                if (!shopDbContext.Products!.Any())
                 {
                     string? products = File.ReadAllText("../Shop.Infrastructure/Data/product.json");
                     List<Product>? productsList = JsonSerializer.Deserialize<List<Product>>(products);
-                    await shopDbContext.Products.AddRangeAsync(productsList!);
+                    await shopDbContext.Products!.AddRangeAsync(productsList!);
                     await shopDbContext.SaveChangesAsync();
                 }
 
-                if (!shopDbContext.Images.Any())
+                if (!shopDbContext.Images!.Any())
                 {
                     string? images = File.ReadAllText("../Shop.Infrastructure/Data/image.json");
                     List<Image>? imagesList = JsonSerializer.Deserialize<List<Image>>(images);
-                    await shopDbContext.Images.AddRangeAsync(imagesList!);
+                    await shopDbContext.Images!.AddRangeAsync(imagesList!);
                     await shopDbContext.SaveChangesAsync();
                 }
 
-                if (!shopDbContext.Countries.Any())
+                if (!shopDbContext.Countries!.Any())
                 {
                     string? countries = File.ReadAllText("../Shop.Infrastructure/Data/countries.json");
                     List<Country>? countriesList = JsonSerializer.Deserialize<List<Country>>(countries);
-                    await shopDbContext.Countries.AddRangeAsync(countriesList!);
+                    await shopDbContext.Countries!.AddRangeAsync(countriesList!);
                     await shopDbContext.SaveChangesAsync();
                 }
 
-                if (!shopDbContext.Reviews.Any())
+                if (!shopDbContext.Reviews!.Any())
                 {
                     string? reviews = File.ReadAllText("../Shop.Infrastructure/Data/review.json");
                     List<Review>? reviewsList = JsonSerializer.Deserialize<List<Review>>(reviews);
-                    await shopDbContext.Reviews.AddRangeAsync(reviewsList!);
+                    await shopDbContext.Reviews!.AddRangeAsync(reviewsList!);
                     await shopDbContext.SaveChangesAsync();
                 }
             }

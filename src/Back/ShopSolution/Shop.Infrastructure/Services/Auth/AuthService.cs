@@ -48,7 +48,7 @@ namespace Shop.Infrastructure.Services.Auth
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
             };
 
-            foreach (var role in user.Roles)
+            foreach (var role in user?.Roles!)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }

@@ -17,19 +17,19 @@ public class GetProductsQueryHandler : IRequestHandler<GetProductsRequest, IRead
     public async Task<IReadOnlyList<GetProductsResponse>> Handle(GetProductsRequest request, CancellationToken cancellationToken)
     {
         var includes = new List<Expression<Func<Product, object>>>();
-        includes.Add(p => p.Images);
-        includes.Add(p => p.Reviews);
+        includes.Add(p => p.Images!);
+        includes.Add(p => p.Reviews!);
 
         var products =  await _unitofwork.Repository<Product>().GetAsync(null, p => p.OrderBy(p => p.Name), includes);
 
         return products.Select(p => new GetProductsResponse
         {
             Id = p.Id,
-            Name = p.Name,
-            Description = p.Description,
+            Name = p.Name!,
+            Description = p.Description!,
             Price = p.Price,
-            Images = p?.Images.Select(i => i.Url).ToList(),
-            Reviews = p?.Reviews.Select(r => r.Comment).ToList()
+            Images = p?.Images!.Select(i => i.Url).ToList()!,
+            Reviews = p?.Reviews!.Select(r => r.Comment).ToList()!
         }).ToList();
 
     }
