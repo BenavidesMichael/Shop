@@ -7,16 +7,14 @@ using Shop.Infrastructure;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
+//------------------------------------------------------------------------------------------------
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddDataBase(builder.Configuration);
 builder.Services.AddSwagger($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 builder.Services.AddCorsExtention();
 builder.Services.AddIdentity(builder.Configuration);
-
 builder.Services.AddInfrastructureServiceRegistartion(builder.Configuration);
 builder.Services.AddApplicationServiceRegistration();
-
 builder.Services.AddControllers(opt =>
 {
     var policy = new AuthorizationPolicyBuilder()
@@ -29,6 +27,7 @@ builder.Services.AddControllers(opt =>
     x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
+//------------------------------------------------------------------------------------------------
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Shop.Application.Contracts.Identity;
 using Shop.Application.Contracts.User;
-using Shop.Application.Models;
+using Shop.Application.Models.AppSettings;
 using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
