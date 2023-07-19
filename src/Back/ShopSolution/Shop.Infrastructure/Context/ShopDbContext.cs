@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Shop.Application.Contracts.Identity;
 using Shop.Domain.Common;
 using Shop.Domain.Entities;
 using Shop.Infrastructure.Conventions;
@@ -10,9 +9,10 @@ namespace Shop.Infrastructure.Context;
 
 public class ShopDbContext : IdentityDbContext<ApplicationUser>
 {
-    private readonly IAuthService? _authService;
     public ShopDbContext(DbContextOptions<ShopDbContext> opt)
-        : base(opt) { }
+        : base(opt)
+    {
+    }
 
     // Product
     public DbSet<Product>? Products { get; set; }
@@ -32,8 +32,7 @@ public class ShopDbContext : IdentityDbContext<ApplicationUser>
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
-        var userName  = _authService!.GetSessionUser();
-        userName ??= "System";
+        var userName = "System";
 
         foreach (var entry in ChangeTracker.Entries<BaseDomain>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
         {

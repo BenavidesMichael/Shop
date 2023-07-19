@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Application.Features.Auths.Users.Commands.Login;
+using Shop.Application.Features.Auths.Users.Commands.Register;
 using Shop.Application.Features.Auths.Users.Models;
 using System.Net;
 
@@ -22,6 +23,16 @@ namespace Shop.API.Controllers
         [HttpPost(nameof(Login))]
         [ProducesResponseType(typeof(LoginResponse), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost(nameof(Register))]
+        [ProducesResponseType(typeof(LoginResponse), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<LoginResponse>> Register([FromBody] RegisterCommand command)
         {
             var response = await _mediator.Send(command);
             return Ok(response);
